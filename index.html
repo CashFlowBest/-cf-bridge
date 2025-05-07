@@ -1,39 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Redirecting...</title>
-    <script>
-      // Отримуємо search-параметри з URL
-      const query = window.location.search.slice(1);
-      const base = "utm_bridge";
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Переадресація...</title>
 
-      // Кодуємо utm та вставляємо в start
-      const startParam = encodeURIComponent(query);
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '697363669650507'); // ← твій Pixel ID
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=697363669650507&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
 
-      // Формуємо посилання на бота
-      const redirectUrl = `https://t.me/CashFlow_Exchange_bot?start=${base}%3D${startParam}`;
+</head>
+<body>
+  <p>Зачекайте, йде переадресація…</p>
 
-      // Встановлюємо піксель Meta
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '697363669650507'); // твій Pixel ID
-      fbq('track', 'PageView');
-
-      // Перенаправляємо
-      window.location.replace(redirectUrl);
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=697363669650507&ev=PageView&noscript=1"
-    /></noscript>
-  </head>
-  <body>
-    Перенаправлення...
-  </body>
+  <script>
+    const utm = window.location.search.substring(1);
+    fetch("https://events.sendpulse.com/events/id/7c8480c880184dafdee880efa75c1211/9062854", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: "none@cashflow.best",
+        phone: "0000000000",
+        start: utm
+      })
+    }).finally(() => {
+      window.location.href = "https://t.me/CashFlow_Exchange_bot";
+    });
+  </script>
+</body>
 </html>
