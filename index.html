@@ -1,47 +1,41 @@
 <!DOCTYPE html>
-<html lang="uk">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Redirecting to Telegram Bot…</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redirecting...</title>
 
-    <!-- Meta Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '697363669650507'); // 👈 твій Pixel ID
-      fbq('track', 'PageView');
-    </script>
-    <noscript>
-      <img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=697363669650507&ev=PageView&noscript=1"/>
-    </noscript>
-    <!-- End Meta Pixel Code -->
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod ?
+    n.callMethod.apply(n,arguments) : n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '697363669650507'); // <-- Твій Pixel ID
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=697363669650507&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
 
-    <script>
-      // Витягуємо UTM
-      const params = new URLSearchParams(window.location.search);
-      const utm = params.toString();
-
-      // Редірект через 500 мс (щоб встиг піксель спрацювати)
-      setTimeout(() => {
-        const baseUrl = "https://t.me/CashFlow_Exchange_bot";
-        if (utm) {
-          const encoded = encodeURIComponent(utm);
-          window.location.href = `${baseUrl}?start=${encoded}`;
-        } else {
-          window.location.href = baseUrl;
-        }
-      }, 500);
-    </script>
-  </head>
-  <body>
-    <p>Зачекай секунду, перенаправляємо…</p>
-  </body>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const campId = params.get('camp') || 'organic';
+    const target = `https://t.me/CashFlow_Exchange_bot?start=${campId}`;
+    
+    // Невелика пауза, щоб Pixel встиг спрацювати
+    setTimeout(() => {
+      window.location.href = target;
+    }, 350);
+  </script>
+</head>
+<body>
+  <p>Redirecting to Telegram…</p>
+</body>
 </html>
