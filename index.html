@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Redirecting...</title>
+  <title>Переадресація...</title>
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -15,36 +15,22 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '697363669650507'); // <-- твій Pixel ID
+    fbq('init', '697363669650507');
     fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
          src="https://www.facebook.com/tr?id=697363669650507&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- End Meta Pixel Code -->
 
-  <script>
-    (function () {
-      const utm = window.location.search.substring(1); // ?utm_source=...
-      const encodedUtm = encodeURIComponent(utm);
-      const eventUrl = "https://events.sendpulse.com/events/id/7c8480c880184dafdee880efa75c1211/9062854";
-
-      fetch(eventUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: "none@cashflow.best",
-          phone: "0000000000",
-          start: utm
-        })
-      }).finally(() => {
-        window.location.href = "https://t.me/CashFlow_Exchange_bot?start=" + encodedUtm;
-      });
-    })();
-  </script>
 </head>
 <body>
-  <p>Зачекайте… Йде перенаправлення до Telegram…</p>
+  <p>Зачекайте… Йде переадресація до Telegram…</p>
+
+  <script>
+    const utm = window.location.search.substring(1); // ?utm_source=... → utm_source=...
+    const redirectLink = "https://t.me/CashFlow_Exchange_bot?start=" + encodeURIComponent(utm);
+    window.location.href = redirectLink;
+  </script>
 </body>
 </html>
