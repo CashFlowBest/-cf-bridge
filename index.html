@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel -->
   <script>
     !function(f,b,e,v,n,t,s){
       if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -22,23 +22,17 @@
     <img height="1" width="1"
          src="https://www.facebook.com/tr?id=697363669650507&ev=PageView&noscript=1"/>
   </noscript>
-  <!-- End Meta Pixel Code -->
 
   <script>
     window.onload = function () {
-      const params = new URLSearchParams(window.location.search);
-      const utm = params.toString();
-      const botLink = "https://t.me/CashFlow_Exchange_bot";
-      const finalLink = utm ? `${botLink}?start=${encodeURIComponent(utm)}` : botLink;
-
-      // Опціонально: невелика затримка для трекінгу
-      setTimeout(() => {
-        window.location.href = finalLink;
-      }, 500);
+      const utm = window.location.search.substring(1);
+      const encoded = encodeURIComponent(utm);
+      const link = `https://t.me/CashFlow_Exchange_bot?start=${encoded}`;
+      window.location.href = link;
     };
   </script>
 </head>
 <body>
-  <p>Зачекай, перенаправляємо...</p>
+  <p>Redirecting...</p>
 </body>
 </html>
