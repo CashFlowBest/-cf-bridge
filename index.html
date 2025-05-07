@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8">
-  <title>Переадресація...</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redirecting...</title>
 
   <!-- Meta Pixel Code -->
   <script>
@@ -14,7 +15,7 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '697363669650507'); // ← твій Pixel ID
+    fbq('init', '697363669650507'); // <-- твій Pixel ID
     fbq('track', 'PageView');
   </script>
   <noscript>
@@ -23,25 +24,27 @@
   </noscript>
   <!-- End Meta Pixel Code -->
 
+  <script>
+    (function () {
+      const utm = window.location.search.substring(1); // ?utm_source=...
+      const encodedUtm = encodeURIComponent(utm);
+      const eventUrl = "https://events.sendpulse.com/events/id/7c8480c880184dafdee880efa75c1211/9062854";
+
+      fetch(eventUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: "none@cashflow.best",
+          phone: "0000000000",
+          start: utm
+        })
+      }).finally(() => {
+        window.location.href = "https://t.me/CashFlow_Exchange_bot?start=" + encodedUtm;
+      });
+    })();
+  </script>
 </head>
 <body>
-  <p>Зачекайте, йде переадресація…</p>
-
-  <script>
-    const utm = window.location.search.substring(1);
-    fetch("https://events.sendpulse.com/events/id/7c8480c880184dafdee880efa75c1211/9062854", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email: "none@cashflow.best",
-        phone: "0000000000",
-        start: utm
-      })
-    }).finally(() => {
-      window.location.href = "https://t.me/CashFlow_Exchange_bot";
-    });
-  </script>
+  <p>Зачекайте… Йде перенаправлення до Telegram…</p>
 </body>
 </html>
